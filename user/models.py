@@ -38,6 +38,7 @@ class Order(db.Model):
     deliver_date = db.Column(db.DateTime)
 
     __tablename__ = 'child'
+    parent_id = Column(Integer, ForeignKey('parent.id'))
     customer_name = db.Column(db.Integer, db.ForeignKey('parent.name'))
     def __repr__(self):
         return '<User %r>' % (self.order)
