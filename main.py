@@ -7,18 +7,19 @@ from flask.ext.sqlalchemy import SQLAlchemy
 import os
 from flask.ext.socketio import SocketIO
 
+
+# Set up app with debugging
+app = Flask(__name__)
+socketio = SocketIO(app)
+thread = None
+
+
 #ignore (allow you to print)
 import logging
 from logging import StreamHandler
 file_handler = StreamHandler()
 app.logger.setLevel(logging.DEBUG)  # set the desired logging level here
 app.logger.addHandler(file_handler)
-
-# Set up app with debugging
-app = Flask(__name__)
-app.debug = True
-socketio = SocketIO(app)
-thread = None
 
 if os.environ.get('DATABASE_URL') is None:
     SQLALCHEMY_DATABASE_URI = 'sqlite:////tmp/test.db'
