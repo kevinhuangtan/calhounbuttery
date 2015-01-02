@@ -32,4 +32,5 @@ app.config['SQLALCHEMY_DATABASE_URI'] = SQLALCHEMY_DATABASE_URI
 db = SQLAlchemy(app)
 
 # for flask-login -- secret key needed to use sessions
-app.secret_key = os.environ['BUTTERY_SECRET_KEY']
+# app.secret_key = os.environ['BUTTERY_SECRET_KEY']
+app.secret_key = 'adfiauhf8q34r8qb9fqb3'
