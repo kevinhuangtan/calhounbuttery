@@ -2,6 +2,7 @@
 URL routing & initialization for webapp
 """
 from os.path import join
+import os
 from main import app, socketio
 from flask import send_from_directory, Blueprint, send_file
 from flask import Flask, render_template
@@ -21,4 +22,5 @@ from analytics.analytics import analytics
 app.register_blueprint(analytics)
 
 if __name__ == '__main__':
-    socketio.run(app)
+	# port = int(os.environ.get('PORT', 8080))
+	socketio.run(app)
