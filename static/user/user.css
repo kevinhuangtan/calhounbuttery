@@ -1,0 +1,196 @@
+body{
+	font-size: 16px;
+	font-family: 'Sorts Mill Goudy', serif;
+	padding: 0em;
+	margin: 0em;
+	color: white;
+}
+.container{
+	padding: 2em;
+}
+.background{
+	background: linear-gradient(rgba(0, 0, 0, .8),  rgba(0, 0, 0, .5)), url('buttery.jpg'), no-repeat;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	background-size: 75em;
+	z-index: -1;
+}
+
+h1{
+	color:white;
+	text-align: center;
+}
+h2{
+	font-size: 1.3em;
+	margin-top: .3em;
+	margin-bottom: .3em;
+}
+/*menu*/
+.menu{
+	position: absolute;
+	margin-left: 4%;
+	padding: .2em;
+	text-align: center;
+	width:40%;
+	border:2px solid;
+	border-color: white;
+	border-radius: 4px;
+	background: rgba(0,0,0,0);
+	transition: background 1s;
+	-webkit-transition: background 1s;
+
+}
+.menu:hover{
+	background: rgba(0,0,0,.5);
+}
+.menu-item{
+	cursor:pointer;
+	margin: 5px;
+	color: white;
+	display: inline-block;
+	transition: opacity .3s;
+	-webkit-transition: opacity .3s;
+}
+.menu-item:hover{
+	opacity: .6;
+}
+
+
+/*order form*/
+.order_form{
+	margin-top: 1em;
+	text-align: left;
+	margin-left: 2em
+}
+input{
+	margin: .5em;
+	font-size: 12px;
+	font-family: 'Sorts Mill Goudy', serif;
+	border:2px solid;
+	border-color: white;
+	border-radius: 2px;
+	background: linear-gradient(rgba(0, 0, 0, 0),  rgba(0, 0, 0, 0)) ;
+	color: white;
+	text-align: center;
+	height: 2em;
+}
+#comments{
+	outline:none;
+	text-align: left;
+}
+#submit{
+	color: gray;
+	cursor: pointer;
+	background: rgba(0,0,0,0);
+	transition: color 1s;
+	-webkit-transition: color 1s;
+}
+#submit:hover{
+	color:white;
+}
+
+.order-form input[type=submit]:hover{
+	cursor: pointer;
+	background: rgba(0,0,0,1);
+}
+/*buttery bucks*/
+.buttery-bucks p{ 
+	margin-top: 0em;
+	margin-bottom: .5em;
+}
+.request{
+	display: inline-block;
+
+}
+#request-submit{
+	color: white;
+	transition: color 1s;
+	-webkit-transition: color 1s;
+}
+#request-submit:hover{
+	color:gray;
+	cursor: pointer;
+}
+/*Orders in the kitchen
+*/
+.orders_in_kitchen{
+	position: absolute;
+	padding: .2em;
+	text-align: center;
+	width:37%;
+	height: 10em;
+	left: 52%;
+	border:2px solid;
+	border-color: white;
+	border-radius: 4px;
+	background: rgba(0,0,0,0);
+
+}
+
+.delivered{
+	position: absolute;
+	padding: .2em;
+	text-align: center;
+	width:37%;
+	height: 14em;
+	left: 52%;
+	margin-top: 12em;
+	border:2px solid;
+	border-color: white;
+	border-radius: 4px;
+	background: rgba(0,0,0,0);
+}
+a{
+	text-decoration: none;
+}
+/*.delivered p{
+	margin-top: 0;
+	color:white;
+}
+*/
+.delivered p, .orders_in_kitchen p{
+	margin-bottom: .1em;
+}
+.analytics{
+	position: absolute;
+	margin: 0 auto;
+	left: 0;
+	right: 0;
+	top: 12em;
+	color: gray;
+	transition: color 1s;
+	-webkit-transition: color 1s;
+}
+.analytics:hover{
+	color:white;
+}
+table{
+	border:none;
+	margin: 5px;
+}
+tr, td{
+	border: none;
+}
+
+.logout{
+	font-size: 1.2em;
+	position:fixed; 
+	top:2.5em;
+	left: 90%;
+	color: gray;
+
+	transition: color 1s;
+	-webkit-transition: color 1s;
+}
+.logout:hover{
+	color:white;
+}
+.middle{
+	height: 100%;
+	left: 50%;
+	width: 2px;
+	background-color: red;
+	position: absolute;
+
+}

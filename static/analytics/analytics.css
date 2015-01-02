@@ -1,0 +1,37 @@
+body{
+		font-family: 'Sorts Mill Goudy', serif; 
+
+	margin: 0;
+	text-align: center;
+	font-size: 18px;
+}
+.background{
+	background: linear-gradient(rgba(0, 0, 0, 1),  rgba(0, 0, 0, 1)), url('buttery.jpg'), no-repeat;
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	background-size: 75em;
+	z-index: -1;
+	color:black;
+}
+a{
+	text-decoration: none!important;
+}
+.logout{
+	position:absolute; 
+	top:2.5em;
+	left: 90%;
+}
+.logout a{
+	color: gray;
+	transition: color 1s;
+	-webkit-transition: color 1s;
+}
+
+.logout a:hover{
+	color:white;
+}
+#chart-div {
+	padding-left:10em;
+	overflow: hidden;
+}

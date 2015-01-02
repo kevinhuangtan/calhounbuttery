@@ -1,0 +1,27 @@
+body{
+	font-family: 'Sorts Mill Goudy', serif; 
+	font-size: 20px;
+	margin: 0;
+	text-align: center;
+}
+.background{
+	z-index: -1;
+	top:0;
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	background: linear-gradient(to bottom, rgba(0, 0, 0, .5),  rgba(0, 0, 0, .5)), url('temp.jpg');
+	background-size: 70em;
+	background-position: center;
+}
+.logout{
+	position:fixed; 
+	top:85%;
+	left: 90%;
+	color: gray;
+	transition: color 1s;
+	-webkit-transition: color 1s;
+}
+.logout:hover{
+	color:white;
+}

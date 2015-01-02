@@ -1,0 +1,61 @@
+{% extends "kitchen.html" %}
+
+{% block script %}
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/0.9.16/socket.io.min.js"></script>
+		 <script type="text/javascript" charset="utf-8">
+		$(document).ready(function(){
+			namespace = '/test'; 
+			var socket = io.connect('http://' + document.domain + ':' + location.port + namespace);
+
+			//this function is required
+			socket.on('connect', function() {
+			});
+			socket.on('clear kitchen sheet', function(){ 
+				$('.table_orders').find("tr:gt(0)").remove();
+			});
+			socket.on('print orders kitchen', function(msg) {
+				$('.table_orders').append(
+					'<tr><td>' + msg.order+'</td><td>' +  msg.comments+'</td><td>' +  msg.name+'</td><td><form method="post"><input type="hidden" name="id"value="'+msg.id+'"><input type="submit" value="" id="submit_button"></form></td></tr>');   
+					// use callback function otherwise submit handler added before form is created
+					add_submit_handler();   
+			});
+			function add_submit_handler(){
+				 $('form').submit(function(){
+					var serialize = $(this).serialize();
+					var order_id = serialize.split('=')[1]
+					console.log(order_id);
+					// must use data parameter
+					socket.emit('notify customer', {data:order_id});
+				});
+			}
+		});
+
+	</script>
+{% endblock %}
+
+{% block body %}
+	<a href='/logout'><p class="logout">logout</p></a>
+
+	<table class="table_orders">
+		<tr><th>Order</th><th>Comments</th><th>Name</th></th><th>Deliver</th>
+		</tr>
+	</table>
+	<div class="bucks">
+		<p class="bucks-item">Add Buttery Bucks: </p>
+		<form class="bucks-item" action="submit_bucks" method="post">
+			<input placeholder="Customer Name" size = "15" type="text" name="name">
+			<input placeholder="$0.00" size = "4" type="text" name="bucks">
+			<input placeholder="$0.00" size = "4" type="submit" name="bucks">
+		</form>
+	</div>	
+{% endblock%}
+
+
+
+
+
+
+
+
+
+

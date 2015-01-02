@@ -1,0 +1,102 @@
+<html>
+  <head>
+    <title>User</title>
+
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.4.2.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/0.9.16/socket.io.min.js"></script>
+    <link href='http://fonts.googleapis.com/css?family=Sorts+Mill+Goudy|Lora|Josefin+Slab|Merriweather|Pacifico|Hammersmith+One|Cinzel|Lobster+Two|Playball|Playfair+Display+SC' rel='stylesheet' type='text/css'>
+    <link href="/static/user/user.css" rel="stylesheet">
+    <script type="text/javascript" charset="utf-8">
+
+
+    var name = {{name|tojson|safe}};
+
+    $(document).ready(function(){
+        //start socket
+        namespace = '/test'; // change to an empty string to use the global namespace
+        var socket = io.connect('http://' + document.domain + ':' + location.port + namespace);
+
+        socket.on('connect', function() {
+        });
+        socket.on('clear customer sheet', function(msg) {
+            $('.orders_table').empty();
+            $('.delivered_table').empty();
+        });
+        socket.on('print orders customer', function(msg) {
+          if(msg.name==name){
+          $('.orders_table').append('<tr><td><p>' +  msg.order+'</p></td><td><p>' +  msg.comments+'</p></td></tr>');
+          }
+        });
+        socket.on('print recent orders customer', function(msg) {
+          if(msg.name==name){
+          $('.delivered_table').append('<tr><td><p>' +  msg.order+'</p></td><td><p>' +  msg.comments+'</p></td></tr>');
+  
+          }
+        });
+        $('#request-submit').click(function(){
+          $('#request-form').submit()
+        });
+
+      });
+    </script>
+
+    <script>
+    $(document).ready(function(){
+      // replace red with menu item
+      $('.menu-item').click(function() {
+        var txt = $(this).find("span").text();
+        console.log($(this).find("span").text());
+        $('#order').val(txt);
+      });
+
+    });
+
+    </script>
+
+  </head>
+  <body>
+    <!--  <div class = "middle"></div> -->
+      <div class='background'></div>
+
+      <div class="container">
+      <h1>Hello {{name}}!</h1>
+
+        <div class="menu">
+          <h2>Menu</h2>
+          <p class="menu-item"><span>mozz sticks</span> 1.50</p>
+          <p class="menu-item"><span>buff chick wrap</span> 2</p>
+          <p class="menu-item"><span>nutelladilla</span> 1</p>
+          <p class="menu-item"><span>cheese case</span> 1</p>
+          <p class="menu-item"><span>chicken case</span> 1.50</p>
+          <p class="menu-item"><span>burger</span> 2</p>
+          <p class="menu-item"><span>crack</span> .75</p>
+          <p class="menu-item"><span>chicken tender</span> 1.75</p>
+
+
+          <form class="order_form" action ="submit_order" method="post">
+            <input size = "17" type = "text" id = "order" placeholder="select option above" name="order" readonly="true"><br>
+            <input size = "40" maxlength="40"type = "text" id = "comments" placeholder='Hot sauce? Maple Syrup? Add comments here' name="comments" ><br>
+          <input id = "submit" type="submit" value="Submit">
+          </form>
+
+          <div class="buttery-bucks"> 
+            <p>Buttery Bucks Balance: ${{bucks}}</p>
+            <!-- <p class="request" id="request-submit">Request</p>
+            <form id="request-form" class="request" action="submit_bucks" method="post">
+              <input placeholder="$0.00" size = "4" type="text" name="bucks">
+            </form> -->
+          </div>
+        </div>
+
+         <div class="orders_in_kitchen"><h2>Orders in the Kitchen</h2><table class="orders_table"></table></div>
+
+         <div class="delivered"><h2>Recently Delivered</h2><table class="delivered_table"></table>
+          <a href="/analytics"><p class="analytics">Check out analytics</p></a>
+         </div>
+
+      </div>
+
+    <a href='/logout'><p class="logout">logout</p></a>
+
+  </body>
+</html>

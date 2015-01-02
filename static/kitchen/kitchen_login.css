@@ -1,0 +1,31 @@
+
+.kitchen_login{
+	text-align: center;
+	margin-top: 10em;
+}
+input{
+/*	make submit button same as textfield */
+	padding-top: 0;
+	padding-bottom: 0;
+	color:white;
+	font-size: 1em;
+	margin: .5em;
+	border-style: solid;
+	border-width: 2px;
+	border-radius: 2px;
+	border-color: white;
+	font-family: 'Sorts Mill Goudy', serif;
+	background:rgba(0,0,0,0);
+	transition: background 1s;
+	-webkit-transition: background 1s;
+	-o-transition: background .5s 1s; 
+}
+input[type=submit]{
+
+	cursor: pointer;
+	color:white;
+	font-size: 1em;
+}
+input[type=submit]:hover{
+	background:rgba(255,255,255,.4);
+}
