@@ -1,7 +1,10 @@
 from main import db
 from sqlalchemy.orm import relationship, backref
 from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy import Table, Column, Integer, ForeignKey
 from datetime import datetime
+
+Base = declarative_base()
 
 class User(db.Model):
 
