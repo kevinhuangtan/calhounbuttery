@@ -22,7 +22,7 @@ def handle_submit_order():
 	comments = request.form["comments"]
 	print(order + comments)
 	if (order !=""):
-		g.order = Order(order=order, comments=comments, delivered = False, customer_name=session['name'])
+		g.order = Order(order=order, comments=comments, delivered = False, parent_id=session['id'])
 		db.session.add(g.order)
 		user = User.query.filter_by(id=session['id']).first()
 		if (user.buttery_bucks > 0):
@@ -53,7 +53,7 @@ def on_connect():
 		order_s = str(order.order)
 		comments = str(order.comments)
 		delivered = str(order.delivered)
-		customer = str(order.customer_name)
+		customer = str(User.query.filter_by(id=order.parent_id).first().name)
 		emit('print orders customer',
 		{'order': order_s, 'comments': comments,'delivered': delivered,'name': customer, 'id':order.id}, 
 		broadcast=True)
@@ -68,7 +68,7 @@ def on_connect():
 			order_s = str(recent_order.order)
 			comments = str(recent_order.comments)
 			delivered = str(recent_order.delivered)
-			customer = str(recent_order.customer_name)
+			customer = str(User.query.filter_by(id=recent_order.parent_id).first().name)
 			recent_delivered = recent_delivered + 1
 			emit('print recent orders customer',
 			{'order': order_s, 'comments': comments,'delivered': delivered,'name': customer, 'id':recent_order.id}, 
