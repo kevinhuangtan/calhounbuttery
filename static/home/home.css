@@ -121,7 +121,7 @@ input{
 	margin-bottom: 1.5em;
 }
 
-.signup-form input[type=text]{
+.signup-form input{
 	height:3em;
 	outline: none;
 	border:2px solid;
