@@ -22,20 +22,17 @@ def handle_submit_order():
 	comments = request.form["comments"]
 	print(order + comments)
 	if (order !=""):
-		g.order = Order(order=order, comments=comments, delivered = False, parent_id=session['id'])
-		db.session.add(g.order)
 		user = User.query.filter_by(id=session['id']).first()
-		if (user.buttery_bucks > 0):
-			user.buttery_bucks = user.buttery_bucks - menu[order];
+		bucks = 'cash';
+		if (user.buttery_bucks > 0 and (float(user.buttery_bucks) > float(menu[order]))):
+			user.buttery_bucks = float(float(user.buttery_bucks) - float(menu[order]));
+			bucks = 'bucks'
+		g.order = Order(order=order, comments=comments, delivered = False, parent_id=session['id'], bucks_payment = bucks)
+		db.session.add(g.order)
 		db.session.commit()
 		session['has_order'] = True
 		return redirect ('/user')
 	return render_template('user_page.html', title='Home', name=session['name'])
-
-# @user.route('/submit_bucks', methods=['GET','POST'])
-# def handle_submit_bucks():
-# 	print(request.form["bucks"])
-# 	return redirect('/user')
 
 @user.route('/logout', methods=['GET', 'POST'])
 def logout():
@@ -58,7 +55,7 @@ def on_connect():
 		{'order': order_s, 'comments': comments,'delivered': delivered,'name': customer, 'id':order.id}, 
 		broadcast=True)
 		emit('print orders kitchen',
-		{'order': order_s, 'comments': comments,'delivered': delivered,'name': customer, 'id':order.id}, 
+		{'order': order_s, 'comments': comments,'delivered': delivered,'name': customer, 'id':order.id, 'payment':order.bucks_payment}, 
 		broadcast=True)
 	recent_delivered = 0
 	for recent_order in reversed(recent_orders):

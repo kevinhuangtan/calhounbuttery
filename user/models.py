@@ -36,6 +36,7 @@ class Order(db.Model):
     date = db.Column(db.DateTime)
     delivered = db.Column(db.Boolean())
     deliver_date = db.Column(db.DateTime)
+    bucks_payment = db.Column(db.String(50))
 
     __tablename__ = 'child'
     parent_id = Column(Integer, ForeignKey('parent.id'))
@@ -46,5 +47,5 @@ class Order(db.Model):
     def get_id(self):
         return unicode(self.id)  # python 2
 
-menu = dict([('mozz sticks', 1.50), ('buff chick wrap', 2), ('nutelladilla', 1),('cheese case', 1),('chicken case', 1.50),('burger', 2),('crack', .75),('chicken tender', 1)])
+menu = dict([('mozz sticks', 1.25), ('buff chick wrap', 2.0), ('nutelladilla', 1.0),('cheese case', 1.0),('chicken case', 1.50),('burger', 2.0),('crack', .75),('chicken tender', 2)])
 

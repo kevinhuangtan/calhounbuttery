@@ -15,7 +15,7 @@
 			});
 			socket.on('print orders kitchen', function(msg) {
 				$('.table_orders').append(
-					'<tr><td>' + msg.order+'</td><td>' +  msg.comments+'</td><td>' +  msg.name+'</td><td><form method="post"><input type="hidden" name="id"value="'+msg.id+'"><input type="submit" value="" id="submit_button"></form></td></tr>');   
+					'<tr><td>' + msg.order+'</td><td>' +  msg.comments+'</td><td>' +  msg.name+'<td>' + msg.payment + '</td>'+'<td><form method="post"><input type="hidden" name="id"value="'+msg.id+'"><input type="submit" value="" id="submit_button"></form></td></tr>');   
 					// use callback function otherwise submit handler added before form is created
 					add_submit_handler();   
 			});
@@ -37,7 +37,7 @@
 	<a href='/logout'><p class="logout">logout</p></a>
 
 	<table class="table_orders">
-		<tr><th>Order</th><th>Comments</th><th>Name</th></th><th>Deliver</th>
+		<tr><th>Order</th><th>Comments</th><th>Name</th><th>Payment</th><th>Deliver</th>
 		</tr>
 	</table>
 	<div class="bucks">
