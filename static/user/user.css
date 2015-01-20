@@ -4,17 +4,13 @@ body{
 	padding: 0em;
 	margin: 0em;
 	color: white;
+	background: linear-gradient(rgba(0, 0, 0, .5),  rgba(0, 0, 0, .5)), url('buttery.jpg'), no-repeat;
+
+	background-size: cover;
+	z-index: -1;
 }
 .container{
 	padding: 2em;
-}
-.background{
-	background: linear-gradient(rgba(0, 0, 0, .5),  rgba(0, 0, 0, .5)), url('buttery.jpg'), no-repeat;
-	width: 100%;
-	height: 100%;
-	position: absolute;
-	background-size: 75em;
-	z-index: -1;
 }
 
 h1{
@@ -59,13 +55,13 @@ h2{
 
 /*order form*/
 .order_form{
-	margin-top: 1em;
+	margin: 1em;
 	text-align: left;
-	margin-left: 2em
+
 }
 input{
 	margin: .5em;
-	font-size: 12px;
+	font-size: .7em;
 	font-family: 'Sorts Mill Goudy', serif;
 	border:2px solid;
 	border-color: white;
@@ -81,7 +77,7 @@ input{
 	text-align: left;
 }
 #submit{
-	color: #E0E0E0;
+	color: gray;
 	cursor: pointer;
 	background: rgba(0,0,0,0);
 	transition: color 1s;
@@ -94,7 +90,7 @@ input{
 	color:white;
 }
 
-.order-form input[type=submit]:hover{
+.order_form input[type=submit]:hover{
 	cursor: pointer;
 	background: rgba(0,0,0,1);
 }
@@ -137,7 +133,7 @@ input{
 	padding: .2em;
 	text-align: center;
 	width:37%;
-	height: 14em;
+	height: 13em;
 	left: 52%;
 	margin-top: 12em;
 	border:2px solid;
@@ -157,7 +153,7 @@ a{
 	margin: 0 auto;
 	left: 0;
 	right: 0;
-	top: 12em;
+	top: 11em;
 	color: #E0E0E0;
 	transition: color 1s;
 	-webkit-transition: color 1s;
@@ -175,7 +171,7 @@ tr, td{
 
 .logout{
 	font-size: 1.2em;
-	position:fixed; 
+	position:absolute; 
 	top:2.5em;
 	left: 90%;
 	color: #E0E0E0;
@@ -192,5 +188,61 @@ tr, td{
 	width: 2px;
 	background-color: red;
 	position: absolute;
+}
+
+@media all and (max-device-width: 400px){
+	body{
+		font-size: 40px;
+	}
+	h1{
+		font-size: 0em;
+	}
+	.menu{
+		width: 20em;
+		left:0;
+		height:17em;
+		margin: 0 auto;
+		left:0;
+		right: 0;
+	}
+	input{
+		font-size: .8em;
+	}
+	.buttery-bucks p{
+		margin: 0;
+	}
+	.orders_in_kitchen{
+		top: 20em;
+		width: 20em;
+		margin: 0 auto;
+		left:0;
+		right: 0;
+		height: 9em;
+	}
+	.delivered{
+		width: 20em;
+		height: 10em;
+		top: 30em;
+		left:0;
+		margin: 0 auto;
+		left:0;
+		right: 0;
+	}
+	.logout{
+		right: 0;
+	}
+	.analytics{
+		top: 8em;
+	}
+	.order_form{
+		margin: 0;
+	}
 
 }
+
+
+
+
+
+
+

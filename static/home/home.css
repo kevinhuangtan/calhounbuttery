@@ -85,7 +85,7 @@ input{
 	position:absolute;
 	right: 2em;
 	top:.5em;
-	font-size: 14px;
+	font-size: .8em;
 }
 
 .login-form > p{
@@ -112,7 +112,7 @@ input{
 	margin: 0 auto;
 	left: 0;
 	right: 0;
-	margin-top: 12.1em;
+	top: 12.1em;
 	display: none;
 }
 
@@ -167,3 +167,23 @@ input{
  	left:10em;
  	position: absolute;
  }
+
+
+@media all and (max-device-width: 400px){
+	body{
+		font-size: 40px;
+	}
+	.intro{
+		width: 20em;
+	}
+	.signup{
+		top: 10em;
+	}
+}
+
+
+
+
+
+
+
