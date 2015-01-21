@@ -12,7 +12,7 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True, unique=True) 
     name = db.Column(db.String(64))
     email = db.Column(db.String(64), unique=True) 
-    password = db.Column(db.String(64)) 
+    password = db.Column(db.String(150)) 
     buttery_worker = db.Column(db.Boolean)
     buttery_bucks = db.Column(db.Float)
     phone_number = db.Column(db.Integer)
