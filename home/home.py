@@ -21,7 +21,7 @@ def handle_login():
 	password = request.form['password']
 	user = User.query.filter_by(email=email).first()
 	if user != None:
-		if password == user.password:
+		if user.verify_password(password):
 			print('correct password')
 			session['logged_in'] = True; 
 			session['name'] = user.name
@@ -46,7 +46,8 @@ def handle_signup():
 		print ('not valid email')
 		return render_template('home.html', error="not valid email")
 	if (name!="" and email!="" and password!=""):
-		g.user = User(name=name, email=email, password=password, buttery_bucks=0, user_date =datetime.now())
+		g.user = User(name=name, email=email, buttery_bucks=0, user_date =datetime.now())
+		g.user.hash_password(password)
 		db.session.add(g.user)
 		db.session.commit()
 		session['logged_in'] = True; 
