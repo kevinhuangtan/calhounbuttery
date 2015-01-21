@@ -46,6 +46,7 @@ def on_connect():
 	recent_orders = Order.query.filter_by(delivered=True).all()
 	emit('clear kitchen sheet', broadcast=True)
 	emit('clear customer sheet', broadcast=True)
+	print('hello')
 	for order in orders:
 		order_s = str(order.order)
 		comments = str(order.comments)
@@ -54,6 +55,7 @@ def on_connect():
 		emit('print orders customer',
 		{'order': order_s, 'comments': comments,'delivered': delivered,'name': customer, 'id':order.id}, 
 		broadcast=True)
+		print(order_s)
 		emit('print orders kitchen',
 		{'order': order_s, 'comments': comments,'delivered': delivered,'name': customer, 'id':order.id, 'payment':order.bucks_payment}, 
 		broadcast=True)
