@@ -22,4 +22,4 @@ from analytics.analytics import analytics
 app.register_blueprint(analytics)
 
 if __name__ == '__main__':
-	socketio.run(app, port=80)
+	socketio.run(app)
