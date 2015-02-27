@@ -39,7 +39,7 @@ def logout():
 	session.clear()
 	return redirect('/')
 
-@socketio.on('connect', namespace='/test')
+@socketio.on('connect', namespace='/socket.io')
 def on_connect():
 	#whenever a new connect, kitchen refreshes
 	orders = Order.query.filter_by(delivered=False).all()
@@ -74,7 +74,7 @@ def on_connect():
 			broadcast=True)
 
 
-@socketio.on('disconnect', namespace='/test')
+@socketio.on('disconnect', namespace='/socket.io')
 def test_disconnect():
 	print('Client disconnected')
 
