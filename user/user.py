@@ -74,7 +74,7 @@ def on_connect():
 			broadcast=True)
 
 
-@socketio.on('disconnect', namespace='/socket.io')
+@socketio.on('disconnect', namespace='/test')
 def test_disconnect():
 	print('Client disconnected')
 
