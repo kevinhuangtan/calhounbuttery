@@ -13,7 +13,7 @@
 
     $(document).ready(function(){
         //start socket
-        namespace = '/test'; // change to an empty string to use the global namespace
+        namespace = '/socket.io'; // change to an empty string to use the global namespace
         var socket = io.connect('http://' + document.domain + ':' + location.port + namespace);
 
         socket.on('connect', function() {
