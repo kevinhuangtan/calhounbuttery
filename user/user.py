@@ -39,7 +39,7 @@ def logout():
 	session.clear()
 	return redirect('/')
 
-@socketio.on('connect', namespace='/socket.io')
+@socketio.on('connect', namespace='/test')
 def on_connect():
 	#whenever a new connect, kitchen refreshes
 	orders = Order.query.filter_by(delivered=False).all()
