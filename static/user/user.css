@@ -242,7 +242,24 @@ tr, td{
 
 
 
+.designed{
+	position: absolute;
+	bottom: -.5em;
+	right:3em;
+	opacity: .5;
+	font-size: 1.2em;
+}
+.designed a {
+	text-decoration: none;
+	color:white;
 
+	transition: opacity .5s;
+	-webkit-transition: opacity .5s;
+	-o-transition: opacity .5s;	
+}
+.designed a:hover {
+	opacity: .5;
+}
 
 
 
